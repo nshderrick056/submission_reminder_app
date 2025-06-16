@@ -82,4 +82,16 @@ Nshuti, Programming, not submitted
 
 EOF
 
+# creating the startup.sh
+
+cat << EOF > $sub_dir/startup.sh
+
+#!/bin/bash
+
+echo "Running the submission reminder app___"
+
+bash ./app/remider.sh
+
+EOF
+
 
