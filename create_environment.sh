@@ -7,7 +7,7 @@ sub_dir="submission_reminder_${name}"
 
 # Time to create the sub-directories
 
-mkdir -p $sub_dir/{app,modules,assests,config}
+mkdir -p $sub_dir/{app,modules,assets,config}
 
 # creating the config.env
 
@@ -65,6 +65,20 @@ function check_submissions {
         fi
     done < <(tail -n +2 "$submissions_file") # Skip the header
 }
+
+EOF
+
+# creating the submissions.txt with atleast 5 entries
+
+cat << EOF > $sub_dir/assets/submissions.txt
+
+student, assignment, submission status
+Chinemerem, Shell Navigation, not submitted
+Chiagoziem, Git, submitted
+Divine, Shell Navigation, not submitted
+Anissa, Shell Basics, submitted
+Derrick, Linux, not submitted
+Nshuti, Programming, not submitted
 
 EOF
 
