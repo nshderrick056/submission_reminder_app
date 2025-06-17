@@ -12,7 +12,7 @@ mkdir -p $sub_dir/{app,modules,assets,config}
 
 # creating the config.env
 
-cat << EOF > $sub_dir/config/config.env
+cat << 'EOF' > $sub_dir/config/config.env
 
 # This is the config file
 ASSIGNMENT="Shell Navigation"
@@ -22,16 +22,20 @@ EOF
 
 # creating the reminder.sh
 
-cat << EOF > $sub_dir/app/reminder.sh
+cat << 'EOF' > $sub_dir/app/reminder.sh
 
 #!/bin/bash
 
+# Getting the current directory
+
+dir="$(cd "$(dirname "$0")/.." && pwd)"
+
 # Source environment variables and helper functions
-source ./config/config.env
-source ./modules/functions.sh
+source "$dir/config/config.env"
+source "$dir/modules/functions.sh"
 
 # Path to the submissions file
-submissions_file="./assets/submissions.txt"
+submissions_file="$dir/assets/submissions.txt"
 
 # Print remaining time and run the reminder function
 echo "Assignment: $ASSIGNMENT"
@@ -44,7 +48,7 @@ EOF
 
 # creating the function.sh
 
-cat << EOF > $sub_dir/modules/functions.sh
+cat << 'EOF' > $sub_dir/modules/functions.sh
 
 #!/bin/bash
 
@@ -71,7 +75,7 @@ EOF
 
 # creating the submissions.txt with atleast 5 entries
 
-cat << EOF > $sub_dir/assets/submissions.txt
+cat << 'EOF' > $sub_dir/assets/submissions.txt
 
 student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
@@ -92,7 +96,9 @@ cat << EOF > $sub_dir/startup.sh
 
 echo "Running the submission reminder app___"
 
-bash ./app/reminder.sh
+path="\$(cd "\$(dirname "\$0")" && pwd)"
+
+bash "\$path/app/reminder.sh"
 
 EOF
 

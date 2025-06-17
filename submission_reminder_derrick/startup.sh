@@ -1,9 +1,9 @@
 
 #!/bin/bash
 
-cd "."
-
 echo "Running the submission reminder app___"
 
-bash ./app/reminder.sh
+path="$(cd "$(dirname "$0")" && pwd)"
+
+bash "$path/app/reminder.sh"
 
