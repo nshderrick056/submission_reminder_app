@@ -1,17 +1,21 @@
 
 #!/bin/bash
 
+# Getting the current directory
+
+dir="$(cd "$(dirname "$0")/.." && pwd)"
+
 # Source environment variables and helper functions
-source ./config/config.env
-source ./modules/functions.sh
+source "$dir/config/config.env"
+source "$dir/modules/functions.sh"
 
 # Path to the submissions file
-submissions_file="./assets/submissions.txt"
+submissions_file="$dir/assets/submissions.txt"
 
 # Print remaining time and run the reminder function
-echo "Assignment: "
-echo "Days remaining to submit:  days"
+echo "Assignment: $ASSIGNMENT"
+echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
-check_submissions 
+check_submissions $submissions_file
 
