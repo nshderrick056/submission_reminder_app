@@ -10,11 +10,11 @@ function check_submissions {
     while IFS=, read -r student assignment status; do
         # Remove leading and trailing whitespace
         student=
-        assignment=
-        status=
+        assignment=sdl
+        status=not submitted
 
         # Check if assignment matches and status is 'not submitted'
-        if [[ "" == "" && "" == "not submitted" ]]; then
+        if [[ "sdl" == "" && "not submitted" == "not submitted" ]]; then
             echo "Reminder:  has not submitted the  assignment!"
         fi
     done < <(tail -n +2 "") # Skip the header

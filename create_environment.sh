@@ -3,6 +3,7 @@
 # prompting the user for the user's name
 
 read -p "Please insert your name: " name
+
 sub_dir="submission_reminder_${name}"
 
 # Time to create the sub-directories
@@ -43,7 +44,7 @@ EOF
 
 # creating the function.sh
 
-cat << EOF > $sub_dir/modules/fuction.sh
+cat << EOF > $sub_dir/modules/functions.sh
 
 #!/bin/bash
 
@@ -82,6 +83,7 @@ Nshuti, Programming, not submitted
 
 EOF
 
+
 # creating the startup.sh
 
 cat << EOF > $sub_dir/startup.sh
@@ -90,8 +92,13 @@ cat << EOF > $sub_dir/startup.sh
 
 echo "Running the submission reminder app___"
 
-bash ./app/remider.sh
+bash ./app/reminder.sh
 
 EOF
 
+# turning all the .sh files executable
 
+# Make all .sh files executable
+find $sub_dir -name "*.sh" -exec chmod 777 {} \;
+
+echo "The setup has been fully completed and can be found in your personal: $sub_dir folder."
