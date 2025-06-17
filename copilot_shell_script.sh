@@ -10,7 +10,7 @@ read -p "Please insert in your assignment name: " assignment_name
 
 # Replacing the ASSIGNMENT in config.env with the new assignment
 
-sed -i "s/^ASSIGNMENT=.*/ASSIGNMENT=\"assignment_name\"/" "dir_name/config/config.env"
+sed -i "s/^ASSIGNMENT=.*/ASSIGNMENT=\"$assignment_name\"/" "$dir_name/config/config.env"
 
 echo "ASSIGNMENT updated to \"$assignment_name\" in $dir_name/config/config.env"
 

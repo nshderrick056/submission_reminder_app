@@ -92,7 +92,9 @@ cat << EOF > $sub_dir/startup.sh
 
 echo "Running the submission reminder app___"
 
-bash ./app/reminder.sh
+path=\$(dirname "\$0")
+
+bash "\$path/app/reminder.sh"
 
 EOF
 
