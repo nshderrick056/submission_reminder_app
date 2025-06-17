@@ -90,13 +90,13 @@ EOF
 
 # creating the startup.sh
 
-cat << 'EOF' > $sub_dir/startup.sh
+cat << EOF > $sub_dir/startup.sh
 
 #!/bin/bash
 
 echo "Running the submission reminder app___"
 
-path=\$(dirname "\$0")
+path="\$(cd "\$(dirname "\$0")" && pwd)"
 
 bash "\$path/app/reminder.sh"
 

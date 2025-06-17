@@ -3,7 +3,7 @@
 
 echo "Running the submission reminder app___"
 
-path=\$(dirname "\$0")
+path="$(cd "$(dirname "$0")" && pwd)"
 
-bash "\$path/app/reminder.sh"
+bash "$path/app/reminder.sh"
 
