@@ -84,6 +84,7 @@ Divine, Shell Navigation, not submitted
 Anissa, Shell Basics, submitted
 Derrick, Linux, not submitted
 Nshuti, Programming, not submitted
+Godlove, Sdl, submitted
 
 EOF
 
