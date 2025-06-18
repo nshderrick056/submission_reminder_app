@@ -4,11 +4,21 @@
 
 read -p "Please insert your name: " name
 
+# making sure the input is valid
+
+if [[ -z "$name" ]]; then
+	echo "Error: The name can not be empty. "
+	exit 1
+fi
+
 sub_dir="submission_reminder_${name}"
 
 # Time to create the sub-directories
 
-mkdir -p $sub_dir/{app,modules,assets,config}
+mkdir -p "$sub_dir"/{app,modules,assets,config} || {
+       echo "failure to create the directories."
+       exit 1
+}
 
 # creating the config.env
 
@@ -31,6 +41,9 @@ cat << 'EOF' > $sub_dir/app/reminder.sh
 dir="$(cd "$(dirname "$0")/.." && pwd)"
 
 # Source environment variables and helper functions
+
+# load configuration for the config.env
+
 source "$dir/config/config.env"
 source "$dir/modules/functions.sh"
 
