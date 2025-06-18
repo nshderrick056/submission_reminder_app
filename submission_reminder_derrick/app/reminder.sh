@@ -6,8 +6,20 @@
 dir="$(cd "$(dirname "$0")/.." && pwd)"
 
 # Source environment variables and helper functions
-source "$dir/config/config.env"
-source "$dir/modules/functions.sh"
+
+# the config.env load configuration
+
+if ! source "$dir/config/config.env"; then
+    echo "failing to load the config.env"
+    exit 1
+fi
+
+# the function.sh load configuration
+
+if ! source "$dir/modules/functions.sh"; then
+    echo "Failing to load the functions.sh"
+    exit 1
+fi
 
 # Path to the submissions file
 submissions_file="$dir/assets/submissions.txt"

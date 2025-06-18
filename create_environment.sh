@@ -42,10 +42,20 @@ dir="$(cd "$(dirname "$0")/.." && pwd)"
 
 # Source environment variables and helper functions
 
-# load configuration for the config.env
 
-source "$dir/config/config.env"
-source "$dir/modules/functions.sh"
+# the config.env load configuration
+
+if ! source "$dir/config/config.env"; then
+    echo "failing to load the config.env"
+    exit 1
+fi
+
+# the function.sh load configuration
+
+if ! source "$dir/modules/functions.sh"; then
+    echo "Failing to load the functions.sh"
+    exit 1
+fi
 
 # Path to the submissions file
 submissions_file="$dir/assets/submissions.txt"
@@ -69,6 +79,11 @@ cat << 'EOF' > $sub_dir/modules/functions.sh
 function check_submissions {
     local submissions_file=$1
     echo "Checking submissions in $submissions_file"
+
+    if [[ ! -f "$submissions_file" ]]; then
+        echo "the submissions' file is not found."
+        exit 1
+    fi
 
     # Skip the header and iterate through the lines
     while IFS=, read -r student assignment status; do
